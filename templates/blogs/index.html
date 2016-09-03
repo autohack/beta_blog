@@ -1,0 +1,46 @@
+{% extends "blogs/base.html" %}
+
+
+{% block content %}
+<div>
+  <div style="position: absolute; top: 0; right: 0; width: 200px; text-align:right;margin-right: 50px;">
+  {% if not flag %}
+    <a href="/login/">Log_in</a>
+    <a href="/register/">Sign Up</a>
+   {% else %}
+   		<a href="/logout/">Logout</a>
+   		<a href="/new_blog/">add new blog</a>
+    	<a href="/profile/">My page</a>
+   	{% endif %}	
+  </div>
+ </div>
+<div class="col-sm-6 col-sm-offset-3">
+ <h1>Blogs</h1><br>
+
+{% if latest_blog_list %}
+    {% for blog in latest_blog_list %}
+     <div class="row">
+    <div class="col-sm-12">
+        <div class="thumbnail">
+      <!-- <img src="..." alt="..."> -->
+      <div class="caption">
+        <h3><a href="/{{ blog.id }}/">{{ blog.title }}</a><small>Author:{{blog.user}}</small></h3>
+
+        <p>{{blog.body|linebreaks|truncatechars:120 }}</p>
+        <p><a href="/{{ blog.id }}/" class="btn btn-primary" role="button">View</a></p>
+       </div>
+     </div>
+  </div>
+  <hr/>
+</div>
+
+
+  
+    {% endfor %}
+    </div>
+{% else %}
+    <p>No blogs are available.</p>
+{% endif %}
+
+{% endblock content %}
+

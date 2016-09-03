@@ -1,0 +1,42 @@
+
+{% extends "blogs/base.html" %}
+
+{% block content %}
+<div >
+  <div style="position: absolute; top: 0; right: 0; width: 200px; text-align:right;margin-right: 50px;">
+<a href="/"><h1>Home</h1></a>
+<a href="/new_blog/">add new blog</a>
+  </div>
+ </div>
+ 
+<div class="col-sm-6 col-sm-offset-3">
+<h1>Hi  ,{{curr_user}}</h1>
+<br>
+
+{% if my_list %}
+    
+    {% for blog in my_list %}
+    <div class="row">
+  	<div class="col-sm-12">
+  	   <div class="thumbnail">
+      <!-- <img src="..." alt="..."> -->
+      <div class="caption">
+    
+     <h3><a href="/{{ blog.id }}/">{{ blog.title }}</a>
+     <small>{% if blog.show == False%}(Hidden){% endif %}</small></h3>
+        <p>{{blog.body|linebreaks|truncatechars:240}}</p>
+         <p><a href="/{{ blog.id }}/" class="btn btn-primary" role="button">View</a></p>
+
+    </div>
+    </div>
+    </div>
+    <hr/>
+    </div>
+    {% endfor %}
+    </div>
+    
+{% else %}
+    <p>No blogs are available.</p>
+{% endif %}
+{% endblock content %}
+

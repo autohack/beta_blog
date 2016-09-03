@@ -1,0 +1,17 @@
+{% extends "blogs/base.html" %}
+
+{% block content %}
+<div >
+  <div style="position: absolute; top: 0; right: 0; width: 200px; text-align:right; margin-right: 50px;">
+<a href='/'><h1>Home</h1></a>
+  </div>
+ </div>
+<div class="clo-sm-6 col-sm-offset-3">
+
+<h1>{{ blog.title }} <small>Author: {{blog.user}}</small></h1>
+{{ blog.body |linebreaks }}<br/>
+{% if curr_user == blog.user %}
+<p><a href="/{{blog.id}}/edit/" class="btn btn-primary" role="button">edit</a></p>
+{% endif %}
+</div>
+{% endblock content %}
