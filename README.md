@@ -1,3 +1,3 @@
 # beta_blog
-python - django Blog app
+python - django Blog app/n
 Use Net for Responsive
